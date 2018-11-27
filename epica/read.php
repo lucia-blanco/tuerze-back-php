@@ -10,6 +10,8 @@
   $db = $database->getConnection();
     
   $epic = new Epica($db);
+
+  $epic->id_proyecto = isset($_GET['id_proyecto']) ? $_GET['id_proyecto'] : die();
     
   $stmt = $epic->read();
   $num = $stmt->rowCount();

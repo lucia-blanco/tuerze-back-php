@@ -16,9 +16,13 @@ class Proyecto{
     $query = "SELECT
                 id_proyecto, id_user, name_proyecto
             FROM
-                " . $this->table_name;
+                " . $this->table_name ."
+            WHERE
+                id_user = :id_user";
 
     $stmt = $this->conn->prepare($query);
+
+    $stmt->bindParam(':id_user' , $this->id_user, PDO::PARAM_STR);
 
     $stmt->execute();
 

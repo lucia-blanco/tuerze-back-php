@@ -13,9 +13,7 @@
 
 	$repositorio = new Repositorio($db);
 
-	$data = json_decode(file_get_contents("php://input"));
-
-	$repositorio->id_repo = $data->id_repo;
+	$repositorio->id_repo = isset($_GET['id_repo']) ? $_GET['id_repo'] : die();
 	
 	if($repositorio->delete()) {
 		http_response_code(200);

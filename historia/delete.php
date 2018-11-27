@@ -12,9 +12,7 @@
 
 	$historia = new Historia($db);
 
-	$data = json_decode(file_get_contents("php://input"));
-
-	$historia->id_hist = $data->id_hist;
+	$historia->id_hist = isset($_GET['id_hist']) ? $_GET['id_hist'] : die();
 	
 	if($historia->delete()) {
 			http_response_code(200);

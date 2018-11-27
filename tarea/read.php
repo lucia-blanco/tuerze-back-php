@@ -10,6 +10,8 @@
   $db = $database->getConnection();
     
   $tarea = new Tarea($db);
+
+  $tarea->id_historia = isset($_GET['id_historia']) ? $_GET['id_historia'] : die();
     
   $stmt = $tarea->read();
   $num = $stmt->rowCount();

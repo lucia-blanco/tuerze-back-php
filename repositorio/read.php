@@ -10,6 +10,8 @@
   $db = $database->getConnection();
     
   $repositorio = new Usuario($db);
+
+  $repositorio->id_proyecto = isset($_GET['id_proyecto']) ? $_GET['id_proyecto'] : die();
     
   $stmt = $repositorio->read();
    $num = $stmt->rowCount();

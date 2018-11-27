@@ -10,6 +10,8 @@
   $db = $database->getConnection();
     
   $historia = new Historia($db);
+
+  $historia->id_epica = isset($_GET['id_epica']) ? $_GET['id_epica'] : die();
     
   $stmt = $historia->read();
    $num = $stmt->rowCount();

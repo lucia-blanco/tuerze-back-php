@@ -21,9 +21,13 @@ class Tarea{
     $query = "SELECT
                 id_tarea, id_proyecto, id_epica, id_historia, name_tarea, desc_tarea, priority_tarea, status_tarea
             FROM
-                " . $this->table_name ;
+                " . $this->table_name ."
+            WHERE
+              id_historia = :id_historia";
 
     $stmt = $this->conn->prepare($query);
+
+    $stmt->bindParam(':id_historia' , $this->id_historia, PDO::PARAM_STR);
 
     $stmt->execute();
 

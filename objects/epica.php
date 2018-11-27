@@ -18,9 +18,13 @@
       $query = "SELECT
                 id_epica, id_proyecto, name_epica, desc_epica, status_epica
             FROM
-                " . $this->table_name ;
+                " . $this->table_name ."
+            WHERE
+                id_proyecto= :id_proyecto";
 
       $stmt = $this->conn->prepare($query);
+
+      $stmt->bindParam(':id_proyecto' , $this->id_proyecto, PDO::PARAM_STR);
 
       $stmt->execute();
 

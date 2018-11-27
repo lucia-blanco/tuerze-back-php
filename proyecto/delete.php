@@ -13,9 +13,7 @@
 
 	$proyecto = new Proyecto($db);
 
-	$data = json_decode(file_get_contents("php://input"));
-
-	$proyecto->id_proyecto = $data->id_proyecto;
+	$proyecto->id_proyecto = isset($_GET['id_proyecto']) ? $_GET['id_proyecto'] : die();
 	
 	if($proyecto->delete()) {
 		http_response_code(200);

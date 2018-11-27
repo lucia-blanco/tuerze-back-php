@@ -12,9 +12,7 @@
 
 	$tarea = new Tarea($db);
 
-	$data = json_decode(file_get_contents("php://input"));
-
-	$tarea->id_tarea = $data->id_tarea;
+	$tarea->id_tarea = isset($_GET['id_tarea']) ? $_GET['id_tarea'] : die();
 	
 	if($tarea->delete()) {
 		http_response_code(200);

@@ -10,13 +10,11 @@
 	$database = new Database();
 	$db = $database->getConnection();
 
-	$epic = new Epica($db);
+	$epica = new Epica($db);
 
-	$data = json_decode(file_get_contents("php://input"));
-
-	$epic->id_epica = $data->id_epica;
+	$epica->id_epica = isset($_GET['id_epica']) ? $_GET['id_epica'] : die();
 	
-	if($epic->delete()) {
+	if($epica->delete()) {
 		http_response_code(200);
 		echo json_encode(array("message" => "Epic was deleted."));
 	} else {
