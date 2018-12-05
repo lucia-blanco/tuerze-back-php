@@ -19,13 +19,11 @@ class Historia{
     $query = "SELECT
                 id_hist, id_epica, name_hist, desc_hist, priority_hist, status_hist
             FROM
-                " . $this->table_name ."
-            WHERE
-                id_epica = :id_epica";
+                " . $this->table_name ;
 
     $stmt = $this->conn->prepare($query);
 
-    $stmt->bindParam(':id_epica' , $this->id_epica, PDO::PARAM_STR);
+    // $stmt->bindParam(':id_epica' , $this->id_epica, PDO::PARAM_STR);
 
     $stmt->execute();
 
